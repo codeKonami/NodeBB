@@ -19,7 +19,7 @@ module.exports = function(User) {
 					return callback(err);
 				}
 
-				if ((meta.config.loginAttempts || 10000) < attempts) {
+				if ((meta.config.loginAttempts || 5) < attempts) {
 					// Lock out the account
 					db.set('lockout:' + uid, '', function(err) {
 						if (err) {
