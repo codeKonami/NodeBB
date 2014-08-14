@@ -11,17 +11,15 @@ module.exports = function(User) {
 			if (err) {
 				return callback(err);
 			}
-
 			if (exists) {
 				return callback(new Error('[[error:account-locked]]'));
 			}
-
 			db.increment('loginAttempts:' + uid, function(err, attempts) {
 				if (err) {
 					return callback(err);
 				}
 
-				if ((meta.config.loginAttempts || 5) < attempts) {
+				if ((meta.config.loginAttempts || 10000) < attempts) {
 					// Lock out the account
 					db.set('lockout:' + uid, '', function(err) {
 						if (err) {
