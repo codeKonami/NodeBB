@@ -196,7 +196,7 @@ function completeConfigSetup(err, config, next) {
 		server_conf = config;
 
 	server_conf.base_url = urlObject.protocol + '//' + urlObject.hostname;
-	server_conf.use_port = false;
+	server_conf.use_port = urlObject.port !== null ? true : false;
 	server_conf.relative_path = (urlObject.pathname && urlObject.pathname.length > 1) ? urlObject.pathname : '';
 
 	install.save(server_conf, function(err) {

@@ -339,7 +339,6 @@ middleware.renderHeader = function(req, res, callback) {
 			templateValues.user = results.user;
 			templateValues.customCSS = results.customCSS;
 			templateValues.customJS = results.customJS;
-
 			app.render('header', templateValues, callback);
 		});
 	});
